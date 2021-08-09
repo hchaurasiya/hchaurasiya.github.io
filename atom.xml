@@ -8,6 +8,20 @@
     
       
       <item>
+        <title>Love Writeup</title>
+        
+          <description>&lt;p&gt;Easy Windows box from HackTheBox.&lt;/p&gt;
+</description>
+        
+        <pubDate>Fri, 02 Jul 2021 03:30:00 +0530</pubDate>
+        <link>
+        /Love-writeup</link>
+        <guid isPermaLink="true">/Love-writeup</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Schooled Writeup</title>
         
           <description>&lt;p&gt;Medium Linux box from HackTheBox.&lt;/p&gt;
@@ -38,7 +52,7 @@
       <item>
         <title>Ophiuchi Writeup</title>
         
-          <description>&lt;p&gt;Easy Linux box from HackTheBox.&lt;/p&gt;
+          <description>&lt;p&gt;Medium Linux box from HackTheBox.&lt;/p&gt;
 </description>
         
         <pubDate>Fri, 02 Jul 2021 01:30:00 +0530</pubDate>

