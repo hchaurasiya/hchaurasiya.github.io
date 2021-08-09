@@ -1,4 +1,4 @@
-I"6<p>Easy Linux box from HackTheBox.</p>
+I"�<p>Medium Linux box from HackTheBox.</p>
 
 <p>On rustscan:</p>
 <ul>
@@ -33,14 +33,12 @@ reading tomcat config file we get credentials
 we get #user-txt</p>
 
 <p>after checking sudo -l.<br />
-we can run a file with sudo. That file is checking a wasm file.
-<img src="assets/images/Pasted image 20210609202714.png" alt="Pasted image 20210609202004.png" /></p>
-
-<p>if we check file index.go we se that path is not properly specified completely for main.wasm and deploy.sh .
+we find that we can run sudo with index.go without password.<br />
+if we check file index.go we see that path is not properly specified completely for main.wasm and deploy.sh.
 <img src="assets/images/Pasted image 20210609202714.png" alt="Pasted image 20210609202714.png" /></p>
 
 <p>Let’s create main.wasm which returns 1 as a value of info function
-using <code class="language-plaintext highlighter-rouge">https://mbebenita.github.io/WasmExplorer/</code>
+using <a href="https://mbebenita.github.io/WasmExplorer/">https://mbebenita.github.io/WasmExplorer/</a>
 <img src="assets/images/Pasted image 20210609202957.png" alt="Pasted image 20210609202957.png" /></p>
 
 <p>In deploy.sh let’s put a reverse shell.
