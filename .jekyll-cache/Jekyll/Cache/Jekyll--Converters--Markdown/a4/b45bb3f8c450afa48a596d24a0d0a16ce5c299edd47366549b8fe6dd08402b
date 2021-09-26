@@ -1,0 +1,30 @@
+I"�<p>Easy Linux box from HackTheBox.</p>
+
+<p>On rustscan we found It has 3 ports open 21,22,80.</p>
+
+<p>first tried to use filezilla to login ftp but couldn’t.
+<img src="assets/images/Pasted image 20210615144701.png" alt="Pasted image 20210615144701.png" />
+I needed credentials to login ftp.</p>
+
+<p>Let’s Enumerate webpage. I found it’s giving packets.
+<img src="assets/images/Pasted image 20210615160539.png" alt="Pasted image 20210615160539.png" /></p>
+
+<p>Let’s try to check data packet 0.
+using wireshark.
+<img src="assets/images/Pasted image 20210614120303.png" alt="Pasted image 20210614120303.png" />
+we got credentials.
+user <strong>Nathan</strong> 
+password <strong>Buck3tH4TF0RM3!</strong> 
+We can ssh and ftp using these creds.
+on doing ssh we get #user-txt</p>
+
+<p>For root priv let’s run linpeas.sh
+We found that python has capabillity to setuid as 0.</p>
+
+<p><img src="assets/images/Pasted image 20210615144316.png" alt="Pasted image 20210615144316.png" /></p>
+
+<p>so run <code class="language-plaintext highlighter-rouge">python3 -c 'import os; os.setuid(0);os.system("/bin/sh")'</code></p>
+
+<p>and we get root shell and finally #root-txt</p>
+
+:ET
