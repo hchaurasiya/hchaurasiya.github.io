@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator>
   <link href="/author/r3Z3l/feed.xml" rel="self" type="application/atom+xml" />
   <link href="/" rel="alternate" type="text/html" />
-  <updated>2021-08-09T16:44:33+05:30</updated>
+  <updated>2021-09-26T14:17:18+05:30</updated>
   <id>/author/r3Z3l/feed.xml</id>
 
   
@@ -30,6 +30,65 @@
   
   
 
+  
+    <entry>
+      <title type="html">Cap Writeup</title>
+      <link href="/cap-writeup" rel="alternate" type="text/html" title="Cap Writeup" />
+      <published>2021-09-24T17:30:00+05:30</published>
+      <updated>2021-09-24T17:30:00+05:30</updated>
+      <id>/cap-writeup</id>
+      <content type="html" xml:base="/cap-writeup">&lt;p&gt;Easy Linux box from HackTheBox.&lt;/p&gt;
+
+&lt;p&gt;On rustscan we found It has 3 ports open 21,22,80.&lt;/p&gt;
+
+&lt;p&gt;first tried to use filezilla to login ftp but couldn’t.
+&lt;img src=&quot;assets/images/Pasted image 20210615144701.png&quot; alt=&quot;Pasted image 20210615144701.png&quot; /&gt;
+I needed credentials to login ftp.&lt;/p&gt;
+
+&lt;p&gt;Let’s Enumerate webpage. I found it’s giving packets.
+&lt;img src=&quot;assets/images/Pasted image 20210615160539.png&quot; alt=&quot;Pasted image 20210615160539.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s try to check data packet 0.
+using wireshark.
+&lt;img src=&quot;assets/images/Pasted image 20210614120303.png&quot; alt=&quot;Pasted image 20210614120303.png&quot; /&gt;
+we got credentials.
+user &lt;strong&gt;Nathan&lt;/strong&gt; 
+password &lt;strong&gt;Buck3tH4TF0RM3!&lt;/strong&gt; 
+We can ssh and ftp using these creds.
+on doing ssh we get #user-txt&lt;/p&gt;
+
+&lt;p&gt;For root priv let’s run linpeas.sh
+We found that python has capabillity to setuid as 0.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/Pasted image 20210615144316.png&quot; alt=&quot;Pasted image 20210615144316.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;so run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -c 'import os; os.setuid(0);os.system(&quot;/bin/sh&quot;)'&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;and we get root shell and finally #root-txt&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Himanshu Kumar</name>
+        
+        
+      </author>
+
+      
+
+      
+
+      
+        <summary type="html">Easy Linux box from HackTheBox.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Love Writeup</title>

