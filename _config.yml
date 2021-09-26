@@ -31,8 +31,7 @@ disqus: False
 disqus_shortname: jekyllt # replace with your disqus username
 
 # Google Analytics
-google_analytics: UA-69281367-1 # replace with your GA tracking identifier
-
+google_analytics: vP8xqdR9qiaM4zYrETwzrFuEkueccPPaXKBk_A27_Co # replace with your GA tracking identifier
 # Permalinks
 permalink: /:title
 # permalink: /author/:author
